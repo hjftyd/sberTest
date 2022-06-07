@@ -1,4 +1,4 @@
-let client = {
+const client = {
     "ProfileId": "12w562qrx",
     "PersonInfo": {
         "Name": "Василий Иванов",
@@ -25,8 +25,8 @@ let client = {
  }
 
 function getCardsArrayExpDate(json, date) {
-    let data = JSON.parse(json);
-    let cardArray = [];
+    const data = JSON.parse(json);
+    const cardArray = [];
     for (let i = 0; i < data.CardInfo.length; i++) {
        if (convertDate(data.CardInfo[i].ExpDate) < convertDate(date)) {
             cardArray.push(data.CardInfo[i].CardNumber.substring(data.CardInfo[i].CardNumber.length - 4));
@@ -38,9 +38,9 @@ function getCardsArrayExpDate(json, date) {
     return null;
 }
     const info = JSON.stringify(client)
-    let clientInfo = info
+    const clientInfo = info
     function convertDate(date) {
-        let part = date.split('-');
+        const part = date.split('-');
         return new Date(part[2] + '-' + part[1] + '-' + part[0]);
     }
 console.log(getCardsArrayExpDate(clientInfo, '21-05-2020'));
