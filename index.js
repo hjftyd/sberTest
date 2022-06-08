@@ -26,22 +26,26 @@ const client = {
 
 function getCardsArrayExpDate(json, date) {
     const data = JSON.parse(json);
-    const cardArray = [];
+    const cardsArray = [];
     for (let i = 0; i < data.CardInfo.length; i++) {
-       if (convertDate(data.CardInfo[i].ExpDate) < convertDate(date)) {
-            cardArray.push(data.CardInfo[i].CardNumber.substring(data.CardInfo[i].CardNumber.length - 4));
-        }
+      if (convertDate(data.CardInfo[i].ExpDate) < convertDate(date)) {
+        cardsArray.push(
+          data.CardInfo[i].CardNumber.substring(
+            data.CardInfo[i].CardNumber.length - 4
+          )
+        );
+      }
     }
-    if (cardArray.length) {
-        return cardArray;
+    if (cardsArray.length) {
+      return cardsArray;
     }
     return null;
 }
-    const info = JSON.stringify(client)
-    const clientInfo = info
-    function convertDate(date) {
-        const part = date.split('-');
-        return new Date(part[2] + '-' + part[1] + '-' + part[0]);
-    }
-console.log(getCardsArrayExpDate(clientInfo, '21-05-2020'));
+  const info = JSON.stringify(client);
+  const clientInfo = info;
+  function convertDate(date) {
+    const part = date.split("-");
+    return new Date(part[2] + "-" + part[1] + "-" + part[0]);
+  }
+console.log(getCardsArrayExpDate(clientInfo, "21-05-2020"));
 
